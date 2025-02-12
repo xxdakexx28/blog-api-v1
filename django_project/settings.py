@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', #New
+    'django.contrib.sites', 
     #local apps
     'posts',
     #3rd party apps
@@ -45,10 +45,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'dj_rest_auth',
-    'dj_rest_auth.registration', #New
-    'allauth', #New
-    'allauth.account', #New
-    'allauth.socialaccount', #New
+    'dj_rest_auth.registration', 
+    'allauth', 
+    'allauth.account', 
+    'allauth.socialaccount', 
+    'drf_spectacular', #New
     
 ]
 REST_FRAMEWORK = {
@@ -59,6 +60,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 
@@ -71,7 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware', #New
+    'allauth.account.middleware.AccountMiddleware', 
 ]
 
 CORS_ORIGIN_WHITELIST = (
@@ -93,14 +95,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request', #New
+                'django.template.context_processors.request', 
             ],
         },
     },
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
-SITE_ID = 1 #New
+SITE_ID = 1 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
 
@@ -155,3 +157,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
+# Spectacular Settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Django Blog API',
+    'DESCRIPTION': 'A simple blog API',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    "SCHEMA_PATH_PREFIX":  "api/v1/", 
+}
+    
