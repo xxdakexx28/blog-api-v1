@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', #New
     #local apps
     'posts',
     #3rd party apps
@@ -44,6 +45,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'dj_rest_auth',
+    'dj_rest_auth.registration', #New
+    'allauth', #New
+    'allauth.account', #New
+    'allauth.socialaccount', #New
+    
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -65,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware', #New
 ]
 
 CORS_ORIGIN_WHITELIST = (
@@ -86,11 +93,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request', #New
             ],
         },
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+SITE_ID = 1 #New
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
 
