@@ -165,10 +165,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Spectacular Settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Django Blog API',
-    'DESCRIPTION': 'A simple blog API',
+    'TITLE': 'Django Blog Api',
+    'DESCRIPTION': 'Api for django Api blog ',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
-    "SCHEMA_PATH_PREFIX":  "api/v1/", 
+    "SCHEMA_PATH_PREFIX":  "/api/v1/", 
 }
     
